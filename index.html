@@ -115,9 +115,7 @@
 		<h2>Di cosa parliamo</h2>
 		<h1>Database NoSQL e MongoDB</h1>
 		<img src="images/nosql3.png" alt="" href="" />
-		<div style="background-color:brown">
-			<img src="images/logo-mongodb.png" alt="www.mongodb.org" href="" />
-		</div>
+		<img class="logomongo" src="images/logo-mongodb.png" alt="www.mongodb.org" href="" />
 	</div>
 
 	<div id="ordinedelgiorno" class="step slide" data-x="0" data-y="-1500">
@@ -130,23 +128,46 @@
 		</ul>
 	</div>
 
-	<div id="ordinedelgiorno2" class="step slide" data-x="0" data-y="-1500">
+	<div id="ordinedelgiorno2" class="step slide" data-x="1000" data-y="-1500">
 		<h1>Ordine del giorno:</h1>
-		<img src="images/logo-mongodb.png" alt="www.mongodb.org" href="" />
+		<img class="logomongo" src="images/logo-mongodb.png" alt="www.mongodb.org" href="" />
 		<ul>
 			<li>Cosa è</li>
 			<li>Chi lo usa</li>
 			<li>Cosa abbiamo fatto e ottenuto</li>
 		</ul>
 	</div>
-	<!--<div class="step slide" data-x="0" data-y="-1500">-->
-	<!--<q>Don't you think that presentations given <strong>in modern browsers</strong> shouldn't <strong>copy the limits</strong> of 'classic' slide decks?</q>-->
-	<!--</div>-->
+	<div class="step slide" data-x="2000" data-y="-1500" data-rotate="45">
+		<h1>NoSQL:</h1>
+		<ul>
+			<li>Alternativa migliore dei DB relazionali?</li>
+			<li>Mandiamo in cantina i DB relazionali?</li>
+		</ul>
+	</div>
 
-	<!--<div class="step slide" data-x="1000" data-y="-1500" data-rotate="45">-->
-	<!--<q>Would you like to <strong>impress your audience</strong> with <strong>stunning visualization</strong> of your talk?</q>-->
-	<!--</div>-->
+	<div class="step slide" data-x="3000" data-y="-500" data-rotate="45">
+		<h1>Il termine NoSQL</h1>
+		<p>Johan Oskarsson, Hadoop Meetup SF 2009.</p>
+		Per approfondire <strong>BigTable</strong> e <strong>Dynamo</strong>.
+		<br />
+		<img style="width: 200px"  src="images/google.jpg" alt="" />
+		<img style="width: 200px" src="images/amazon.jpg" alt="" />
+		<img style="width: 200px" src="images/goldengate.jpg" alt="" />
+		<p>Primo uso: anni '90, Carlo Strozzi</p>
+	</div>
 
+	<div class="step slide" data-x="4000" data-y="500" data-rotate="45" >
+		<h1>Il termine NoSQL</h1>
+		Eric Evans (non affiliato con l'Eric Evans del DDD!):
+		<h1>Opensource, distributed, nonrelational database</h1>
+
+	</div>
+
+	<div class="step" data-x="5000" data-y="1500" data-rotate="45" data-scale="1">
+		<p>NoSQL come <b>movimento</b> piu' che come tecnologia</p>
+		<img style="width: 800px"  src="images/nosqlmovement.jpg" alt="" >
+		</img>
+	</div>
 	<!--
 
 	This is an example of step element being scaled.
@@ -292,9 +313,12 @@
     Just sayin' ;)
 
 -->
-<div class="hint">
-	<p>Use a spacebar or arrow keys to navigate</p>
-</div>
+
+
+
+<!--<div class="hint">-->
+	<!--<p>Use a spacebar or arrow keys to navigate</p>-->
+<!--</div>-->
 <script>
 if ("ontouchstart" in document.documentElement) { 
 	document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";

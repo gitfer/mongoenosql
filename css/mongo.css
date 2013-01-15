@@ -193,13 +193,13 @@ a:focus {
 .headerSlides {
 	float: left;
 	display: inline;
-	margin: 4.2em 0.1em 1.2em 2.2em;
+	margin: 0.2em 0.1em 1.2em 2.2em;
 	list-style: none;
 }
 
 
 img.headerSlides {
-	margin: 4.2em 0.1em 1.2em 2.2em;
+	margin: 0.2em 0.1em 1.2em 2.2em;
 }
 
 h2{
@@ -210,4 +210,7 @@ h2{
 }
 #dicosaparliamo h1, #dicosaparliamo h2{
 	color: white;
+}
+.logomongo{
+	background-color: brown;
 }
