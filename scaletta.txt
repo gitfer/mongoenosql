@@ -1,0 +1,16 @@
+Di cosa parliamo
+	Database NoSQL e MongoDB
+
+Ordine del giorno
+	Cosa sono i database NoSQL
+	Perchè ci interessano i database NoSQL
+	NoSQL: classificazioni
+	In cosa si differenzia dai DB relazionali
+
+MongoDB
+	Cosa è
+	Perchè dovremmo impararlo nel 2013
+	Come installarlo
+	Cosa abbiamo fatto
+	Cosa abbiamo ottenuto
+
