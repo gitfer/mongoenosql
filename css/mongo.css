@@ -201,3 +201,13 @@ a:focus {
 img.headerSlides {
 	margin: 4.2em 0.1em 1.2em 2.2em;
 }
+
+h2{
+	color: black;
+}
+#dicosaparliamo{
+	background-image: url("../images/MongoDB_background.png")
+}
+#dicosaparliamo h1, #dicosaparliamo h2{
+	color: white;
+}
