@@ -173,11 +173,11 @@
 		<h2>NoSQL è dunque un <strong>neologismo</strong> che identifica le seguenti caratteristiche:</h2>
 		<br />
 		<ol>
-		        <li>Not using relational model</li>
-		        <li>Running well on cluster</li>
-		        <li>Open-source</li>
-		        <li>Built for the 21st century web estates</li>
-		        <li>Schemaless</li>
+			<li>Not using relational model</li>
+			<li>Running well on cluster</li>
+			<li>Open-source</li>
+			<li>Built for the 21st century web estates</li>
+			<li>Schemaless</li>
 		</ol>
 	</div>
 	<div class="step slide" data-x="7000" data-y="3500" >
@@ -185,10 +185,10 @@
 		Tecnologia di successo da anni
 		<img style="float:right;display: inline" src="images/tuple.png" alt="" href="" />
 		<ol style="width: 50%; float: left; display:inline">
-		        <li>Persistenza</li>
-		        <li>Concorrenza</li>
-		        <li>Integrazione</li>
-		        <li style="font-size: 30px">Modello relazionale comune</li> 
+			<li>Persistenza</li>
+			<li>Concorrenza</li>
+			<li>Integrazione</li>
+			<li style="font-size: 30px">Modello relazionale comune</li> 
 			<li>Dialetti SQL simili</li>
 		</ol>
 	</div>
@@ -196,13 +196,13 @@
 		<h1>Vecchi problemi e nuove esigenze</h1>
 		<ul>
 			<ul>
-			Vecchio problema:
-		        <li>Impedance mismatch</li>
+				Vecchio problema:
+				<li>Impedance mismatch</li>
 			</ul>
 			<ul>Nuove esigenze:
-		        <li>Mole di dati cambiata</li>
-		        <li>Costi: scalare orizzontalmente</li>
-		        <li>Performance</li>
+				<li>Mole di dati cambiata</li>
+				<li>Costi: scalare orizzontalmente</li>
+				<li>Performance</li>
 			</ul>
 		</ul>
 	</div>
@@ -212,26 +212,73 @@
 		<p>In-memory model <> relational model</p>
 		<p>Diverse strutture dati, record innestati, liste...</p>
 		<p>'90
-		        <a href="http://www.vancelucas.com/blog/nosql-first-impressions-object-databases-missed-the-boat/" target="_blank">Object database</a>
+		<a href="http://www.vancelucas.com/blog/nosql-first-impressions-object-databases-missed-the-boat/" target="_blank">Object database</a>
 		</p>
 		<p>ORM (NHibernate, ActiveRecord...)</p>
 	</div>
 	<div class="step slide" data-x="10000" data-y="3500" style="background-image: url('images/newyearseve.jpg'); background-repeat: no-repeat;background-size:cover;color:white !important;">
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 		<p style="font-size: 50px;"><strong>Nuove esigenze:</strong> grandi datasets, social network, aumento utenti...</p>
 
 		<div style="background-color:white; color:black;">
-		<img src="images/money.jpg" alt="" href="" style="width: 20%" />
+			<img src="images/money.jpg" alt="" href="" style="width: 20%" />
 			<ul>
-			        <li>Scalare orizzontalmente</li>
-			        <li>Robustezza</li>
+				<li>Scalare orizzontalmente</li>
+				<li>Robustezza</li>
 			</ul>
-		<p>RDBMS clustered (Oracle RAC e MS SQL Server) ma hanno un shared disk subsystem (bottleneck) e sono prezzati su una single-server assumption</p>
+			<p>RDBMS clustered (Oracle RAC e MS SQL Server) ma hanno un shared disk subsystem (bottleneck) e sono prezzati su una single-server assumption</p>
 		</div>
+	</div>
+	<div class="step slide" data-x="11000" data-y="3500" >
+		<h1>Data models</h1>
+		<p>Come percepiamo e manipoliamo i dati (<strong>data model</strong>) è diverso da come il database li memorizza(<strong>storage model</strong>)</p>
+
+		<q>I database relazionali si basano sul <strong>modello relazionale</strong></q>
+		<q>Una tupla (o un insieme di tuple) non sempre è una struttura adatta (nesting?)</q>
+
+
+	</div>
+
+	<div class="step slide" data-x="12000" data-y="3500" >
+		<ul>
+			<li><strong>Key-value</strong> (aggregate-orientation. Dynamo, memcached)</li>
+			<li><strong>Column</strong> (aggregate-orientation. BigTable, HBase, Cassandra)</li>
+			<li><strong>Document</strong> (aggregate-orientation. MongoDB, RavenDB, CouchDB)</li>
+			<li><strong>Graph</strong> (Neo4J, Infinite Graph, OrientDB, FlockDB)</li>
+		</ul>
+	</div>
+	<div class="step slide" data-x="13000" data-y="3500" >
+		<p>Key-value, document e column-family hanno tutti una <strong>unità fondamentale di memorizzazione</strong> di dati strettamente collegati (rispettivamente: value, document, column-family) </p>
+		<br />
+		<p><strong>Aggregate:</strong> collezione di oggetti collegati che vogliamo trattare come una unità. <i>It is a unit for data manipulation and management consistency</i>.
+		<br />
+		<br />
+		<p>Gli aggregati costituiscono i <strong>confini per le transazioni acide con il DB</strong></p>
+	</div>
+	<div class="step slide" data-x="14000" data-y="3500" >
+		<h1>Distribuzione dei dati</h1>
+		<p>L'aggregato è inoltre l'<strong>unità naturale di distribuzione</strong></p>
+		<p>(Auto)Sharding (dati differenti su nodi differenti) e replication (2 tecniche: master-slave o peer-to-peer)</p>
+		<p>Una delle 2 o entrambe</p>
+	</div>
+	<div class="step slide" data-x="15000" data-y="3500" >
+		<h1>Perchè dunque i database NoSQL?<h1>
+				<ol>
+				        <li>1) Produttività nello sviluppo delle applicazioni (evitare frustrazioni da impedance mismatch)</li>
+				        <li>2) Dati con dimensioni e performance che richiedono un cluster</li>
+				</ol>
+	</div>
+	<div class="step slide" data-x="16000" data-y="3500" >
+		<h1>Abbandonare i DB relazionali?</h1>
+				<p>No, ma usare differenti data store in diverse circostanze.</p>
+
+				<p>Polyglot persistence</p>
+				<p>Polyglot programmer</p>
+				<p>Capire la natura dei dati che vogliamo salvare e come vogliamo manipolarli.</p>
 	</div>
 	<!--
 
@@ -281,7 +328,7 @@
 
 
 <!--<div class="hint">-->
-	<!--<p>Use a spacebar or arrow keys to navigate</p>-->
+<!--<p>Use a spacebar or arrow keys to navigate</p>-->
 <!--</div>-->
 <script>
 if ("ontouchstart" in document.documentElement) { 
