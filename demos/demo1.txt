@@ -21,6 +21,8 @@ db.persone.update({Name: "Fede"}, {$set: {Name: "Mario Rossi"}})
 
 db.persone.insert({Name: "Alonso", anni: 30, Tipologia: "pilota", passatempi: [ "auto", "donne" ] })
 
+db.persone.count({anni: 30})
+
 db.persone.remove()
 
 db.persone.drop()
@@ -29,15 +31,7 @@ exit
 
 
 ====================================================================
-Extra:
-
-Arrays:
 $set, $unset, $push, $pushAll, $pop, $popAll
-db.scores.find({ "favorites": "pretzels"}) se il campo favorites contiene in un array pretzel il documento matcha.
-$all: il campo deve contenere tutti i valori.
-$in: either one or another.
+$addToSet aggiunge elemento in array solo se non già presente. Se il field non è un array viene sollevata una error condition.
+Non è possibile avere una transaction isolata che aggiorni piu' documenti.
 
-Search:
-$lt, $gt, $lte, $gte
-{ $or: [{name: "alice"}, {age: 43} ]}
-{name: {$regex: "e$"}}
