@@ -1,0 +1,33 @@
+help
+
+show dbs
+
+use prova
+db
+db.dropDatabase()
+
+db.persone.insert({Name: "Fede", anni: 30})
+db.persone.find()
+
+db.persone.find({anni: {$gte: 30}})
+
+db.persone.insert({Name: "Fede", anni: 30, Tipologia: "Dev"})	
+db.persone.find()
+
+db.persone.find({Tipologia: "Dev"})
+db.persone.find({Tipologia: "Dev"}, {Name: 1, anni: 1});
+
+db.persone.update({Name: "Fede"}, {$set: {Name: "Mario Rossi"}})
+
+db.persone.insert({Name: "Alonso", anni: 30, Tipologia: "pilota", passatempi: [ "auto", "donne" ] })
+
+db.persone.remove()
+
+db.persone.drop()
+
+exit
+
+
+====================================================================
+$set, $unset, $push, $pushAll, $pop, $popAll
+
