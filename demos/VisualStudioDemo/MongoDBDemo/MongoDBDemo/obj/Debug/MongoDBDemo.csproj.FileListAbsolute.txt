@@ -1,0 +1,12 @@
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDBDemo.exe.config
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\obj\Debug\MongoDBDemo.csprojResolveAssemblyReference.cache
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDBDemo.exe
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDBDemo.pdb
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Bson.dll
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Driver.dll
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Bson.pdb
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Bson.xml
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Driver.pdb
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\bin\Debug\MongoDB.Driver.xml
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\obj\Debug\MongoDBDemo.exe
+C:\Users\Federico\mongoenosql\demos\VisualStudioDemo\MongoDBDemo\MongoDBDemo\obj\Debug\MongoDBDemo.pdb
