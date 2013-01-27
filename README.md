@@ -3,7 +3,7 @@ mongoenosql
 
 Here's the [doc!](http://htmlpreview.github.com/?https://github.com/gitfer/mongoenosql/blob/master/index.html)
 
-(Slide in italian)
+Slide in italian. Looks like the link above work only with google chrome. 'git pull' in case of other browsers.
 			
 [Demos](https://github.com/gitfer/mongoenosql/tree/master/demos)
 
