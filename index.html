@@ -216,6 +216,7 @@
 		</p>
 		<p>ORM (NHibernate, ActiveRecord...)</p>
 	</div>
+
 	<div class="step slide" data-x="2000" data-y="500" style="background-image: url('images/newyearseve.jpg'); background-repeat: no-repeat;background-size:cover;color:white !important;">
 		<br />
 		<br />
@@ -233,17 +234,16 @@
 			<p>RDBMS clustered (Oracle RAC e MS SQL Server) ma hanno un shared disk subsystem (bottleneck) e sono prezzati su una single-server assumption</p>
 		</div>
 	</div>
-	<div class="step slide" data-x="-1000" data-y="1500" >
+
+<div class="step slide" data-x="3000" data-y="500"  >
 		<h1>Data models</h1>
-		<p>Come percepiamo e manipoliamo i dati (<strong>data model</strong>) è diverso da come il database li memorizza(<strong>storage model</strong>)</p>
+		<p>Come percepiamo e manipoliamo i dati (<strong>data model</strong>) &egrave; diverso da come il database li memorizza(<strong>storage model</strong>)</p>
 
 		<q>I database relazionali si basano sul <strong>modello relazionale</strong></q>
 		<q>Una tupla (o un insieme di tuple) non sempre è una struttura adatta (nesting?)</q>
-
-
 	</div>
 
-	<div class="step slide" data-x="0" data-y="1500" >
+<div class="step slide" data-x="4000" data-y="500" >
 		<ul>
 			<li><strong>Key-value</strong> (aggregate-orientation. Redis, Dynamo, memcached)</li>
 			<li><strong>Column</strong> (aggregate-orientation. BigTable, HBase, Cassandra)</li>
@@ -251,7 +251,7 @@
 			<li><strong>Graph</strong> (Neo4J, Infinite Graph, OrientDB, FlockDB)</li>
 		</ul>
 	</div>
-	<div class="step slide" data-x="1000" data-y="1500" >
+	<div class="step slide" data-x="5000" data-y="500" >
 		<p>Key-value, document e column-family hanno tutti una <strong>unità fondamentale di memorizzazione</strong> di dati strettamente collegati (rispettivamente: value, document, column-family) </p>
 		<br />
 		<p><strong>Aggregate:</strong> collezione di oggetti collegati che vogliamo trattare come una unità. <i>It is a unit for data manipulation and management consistency</i>.
@@ -259,7 +259,22 @@
 		<br />
 		<p>Gli aggregati costituiscono i <strong>confini per le transazioni acide con il DB</strong></p>
 	</div>
-	<div class="step slide" data-x="2000" data-y="1500" >
+	<div class="step slide" data-x="6000" data-y="500" >
+		<h1>Distribuzione dei dati</h1>
+		<p>L'aggregato è inoltre l'<strong>unità naturale di distribuzione</strong></p>
+		<p>(Auto)<span style="color: red;">Sharding</span> (dati differenti su nodi differenti) e <span style="color:red">replication</span> (2 tecniche: master-slave o peer-to-peer)</p>
+		<p>Una delle 2 o entrambe</p>
+	</div>
+	<div class="step slide" data-x="7000" data-y="500" >
+		<h1>Vantaggi di un sistema distribuito</h1>
+		<ol>
+			<li>Gestire pi&ugrave; grandi quantit&agrave; di dati</li>
+			<li>Processare pi&ugrave; letture o pi&ugrave; scritture</li>
+			<li>Availability</li>
+		</ol>
+		<p>Ma il clustering introduce complessit&agrave;</p>
+	</div>
+	<div class="step slide" data-x="8000" data-y="500" >
 		<h1>Distribuzione dei dati</h1>
 		<p>L'aggregato è inoltre l'<strong>unità naturale di distribuzione</strong></p>
 		<p>(Auto)<span style="color: red;">Sharding</span> (dati differenti su nodi differenti) e <span style="color:red">replication</span> (2 tecniche: master-slave o peer-to-peer)</p>
