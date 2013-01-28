@@ -266,6 +266,28 @@
 		<p>Una delle 2 o entrambe</p>
 	</div>
 	<div class="step slide" data-x="7000" data-y="500" >
+		<h1>Consistenza</h1>
+		<p>La replica aumenta la probabilità di conflitti write-write</p>
+		<p><span style="color: red;">Update</span> consistency: <strong>Conflitti write-write</strong> (2 persone aggiornano contemporaneamente lo stesso dato in maniere diverse).</p>
+		<p>2 approcci per la risoluzione dei conflitti: pessimistico (write-lock) e ottimistico (rileva i conflitti e agisce per risolverli. CVS-style).</p>
+		<p>Spesso si usa un singolo nodo per le write.</p>
+	</div>
+	<div class="step slide" data-x="8000" data-y="500" >
+		<h1>Consistenza</h1>
+		<p><span style="color: red;">Read-write</span> consistency</p>
+		<p>A inserisce un ordine di prodotto</p>
+		<p>B legge le righe e il prezzo complessivo dell'ordine</p>
+		<p>A aggiorna il prezzo complessivo dell'ordine</p>
+		<p>Database <strong>relazionali</strong>: transazioni ACID</p>
+		<p>Database <strong>NoSQL</strong>: update atomici all'interno di un aggregato (inconsistency window per aggiornamenti su molteplici aggregati)</p>
+	</div>
+	<div class="step slide" data-x="9000" data-y="500" >
+		<h1>Consistenza</h1>
+		<p><span style="color: red;">Eventual</span> consistency</p>
+		<p>Eventually all nodes will be updated to the same value</p>
+		<p>Es. prenotazione della ultima stanza da clienti in diverse zone del globo</p>
+	</div>
+	<div class="step slide" data-x="10000" data-y="500" >
 		<h1>Vantaggi di un sistema distribuito</h1>
 		<ol>
 			<li>Gestire pi&ugrave; grandi quantit&agrave; di dati</li>
@@ -274,11 +296,20 @@
 		</ol>
 		<p>Ma il clustering introduce complessit&agrave;</p>
 	</div>
-	<div class="step slide" data-x="8000" data-y="500" >
-		<h1>Distribuzione dei dati</h1>
-		<p>L'aggregato è inoltre l'<strong>unità naturale di distribuzione</strong></p>
-		<p>(Auto)<span style="color: red;">Sharding</span> (dati differenti su nodi differenti) e <span style="color:red">replication</span> (2 tecniche: master-slave o peer-to-peer)</p>
-		<p>Una delle 2 o entrambe</p>
+	<div class="step slide" data-x="11000" data-y="500" >
+		<h1>CAP theorem</h1>
+		<p>Un sistema distribuito non può essere allo stesso tempo consistente, disponibile e partition tolerant (errori di networking).</p>
+		<p><strong>Consistency</strong></p>
+		<p><strong>Availability: </strong>if you can talk to a node in the cluster, it can read and write data</p>
+		<p><strong>Partition tolerance: </strong>il sistema puo' sopportare che il cluster si divida in piu' partizioni incapaci di comunicare tra di loro</p>
+
+	</div>
+	<div class="step slide" data-x="12000" data-y="500" >
+		<img width="700px" src="images/CAP.png" alt="cap" />
+	</div>
+	<div class="step" data-x="13000" data-y="500" >
+		<p>Ci sono casi in cui si puo' avere a che fare con risposte inconsistenti a fronte di certe richieste...
+		... ma questi casi <strong>dipendono strettamente dal dominio e dalla conoscenza del dominio</strong>!</p>
 	</div>
 	<div class="step slide" data-x="-1000" data-y="2500" >
 		<h1>Perchè dunque i database NoSQL?<h1>
@@ -313,19 +344,24 @@
 		        <li>Documenti strutturati JSON-like o serializzati in BSON</li>
 		        <li>Queries (anche di specifici campi di un documento)</li>
 		        <li>Performance (possibilità di definire indici)</li>
+		</ol>
+	</div>
+	<div id="mongodb" class="step slide" data-x="0" data-y="3500" >
+		<h1>Cosa è MongoDB</h1>
+		<ol>
 		        <li>Replication (modello master-slave con votazione)</li>
 		        <li>Scala orizzontalmente (sharding)</li>
 		        <li>Framework di aggregazione</li>
 		        <li>Eventually consistent</li>
 		</ol>
 	</div>
-	<div class="step slide" data-x="0" data-y="3500" style="background-image: url('images/yunolovemongodb.jpeg'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
+	<div class="step slide" data-x="1000" data-y="3500" style="background-image: url('images/yunolovemongodb.jpeg'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
 		<h1>Chi lo usa</h1>
 		<div>
 		<a href="http://www.mongodb.org/display/DOCS/Production+Deployments" target="_blank">Production deployments</a>
 		</div>
 	</div>
-	<div class="step slide" data-x="1000" data-y="3500" style="background-image: url('images/funnydogcomputer.gif'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
+	<div class="step slide" data-x="2000" data-y="3500" style="background-image: url('images/funnydogcomputer.gif'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
 		<h1>Cosa abbiamo fatto e ottenuto</h1>
 
 		<p>Corso free di 7 settimane online.</p>
@@ -334,18 +370,10 @@
 
 		<img width="200px" src="images/achievement.png" alt="achievement" />
 	</div>
-	<div class="step slide" data-x="2000" data-y="3500" >
-		<h1>Demo</h1>
-		<ol>
-			<li>Installazione e avvio</li>
-		        <li>Schemaless e CRUD</li>
-		        <li>Import di dati</li>
-		        <li>Aggregation framework</li>
-		        <li>Indexing</li>
-		        <li>Sharding?</li>
-		</ol>
+	<div class="step" data-x="3000" data-y="3500" >
+		<p style="font-size: 400%"><a href="https://github.com/gitfer/mongoenosql/tree/master/demos" target="_blank">Demo</a></p>
 	</div>
-	<div id="references" class="step slide" data-x="3000" data-y="3500" >
+	<div id="references" class="step slide" data-x="4000" data-y="3500" >
 		<h1>References (1/2)</h1>
 		<ol>
 			<li><a target="_blank" href="http://martinfowler.com/books/nosql.html">NoSQL Distilled</a>by Pramod J. Sadalage e Martin Fowler</li>
@@ -353,7 +381,7 @@
 			<li><a target="_blank"  href="http://www.youtube.com/watch?v=rRoy6I4gKWU&list=FLr67q6C3dUGELOtHo5YWMsA">Google I/O 2012 - SQL vs NoSQL: Battle of the backends</a></li>
 			<li><a target="_blank"  href="http://www.mongodb.org/display/DOCS/CSharp+Driver+Quickstart">C# driver quickstart</a></li>
 	</div>
-	<div class="step slide" data-x="4000" data-y="3500" >
+	<div class="step slide" data-x="5000" data-y="3500" >
 		<h1>References (2/2)</h1>
 		<ol>
 			<li><a target="_blank"  href="http://www.youtube.com/watch?v=w5qr4sx5Vt0">O'Reilly Webcast: Introduction to MongoDB</a></li>
