@@ -214,3 +214,9 @@ h2{
 .logomongo{
 	background-color: brown;
 }
+
+#overview{
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0px;
+}
