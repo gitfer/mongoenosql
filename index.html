@@ -248,7 +248,7 @@
 			<li><strong>Key-value</strong> (aggregate-orientation. Redis, Dynamo, memcached)</li>
 			<li><strong>Column</strong> (aggregate-orientation. BigTable, HBase, Cassandra)</li>
 			<li><strong>Document</strong> (aggregate-orientation. MongoDB, RavenDB, CouchDB)</li>
-			<li><strong>Graph</strong> (Neo4J, Infinite Graph, OrientDB, FlockDB)</li>
+			<li><strong>Graph</strong> (Neo4J, Infinite Graph, OrientDB, FlockDB)<i style="font-size:0.4em;">Quali sono i libri preferiti dagli amici dei tuoi amici?</i></li>
 		</ul>
 	</div>
 	<div class="step slide" data-x="5000" data-y="500" >
@@ -256,23 +256,34 @@
 		<br />
 		<p><strong>Aggregate:</strong> collezione di oggetti collegati che vogliamo trattare come una unità. <i>It is a unit for data manipulation and management consistency</i>.
 		<br />
-		<br />
+		<p>Da <a href="http://en.wikipedia.org/wiki/Domain-driven_design">wikipedia</a>:A collection of objects that are bound together by a root entity, otherwise known as an aggregate root. The aggregate root guarantees the consistency of changes being made within the aggregate by forbidding external objects from holding references to its members.</p>
 		<p>Gli aggregati costituiscono i <strong>confini per le transazioni acide con il DB</strong></p>
+	</div>
+	<div class="step slide" data-x="6000" data-y="500" >
+		<h1 style="red">...DDD?</h1>
+		<img style="width: 250px"  src="images/nosql3.png" alt="" />
+		<img style="width: 250px" src="images/heart.png" alt="" />
+		<img style="width: 250px" src="images/ddd.jpg" alt="" />
 	</div>
 	<div class="step slide" data-x="-1000" data-y="1500" >
 		<h1>Distribuzione dei dati</h1>
 		<p>L'aggregato è inoltre l'<strong>unità naturale di distribuzione</strong></p>
 		<p>(Auto)<span style="color: red;">Sharding</span> (dati differenti su nodi differenti) e <span style="color:red">replication</span> (2 tecniche: master-slave o peer-to-peer)</p>
 		<p>Una delle 2 o entrambe</p>
+		<br />
+		<p>Sharding == no joins!</p>
 	</div>
 	<div class="step slide" data-x="0" data-y="1500">
+		<img src="images/sharding.png" width="100%" alt="" href="" />
+	</div>
+	<div class="step slide" data-x="1000" data-y="1500">
 		<h1>Consistenza</h1>
 		<p>La replica aumenta la probabilità di conflitti write-write</p>
 		<p><span style="color: red;">Update</span> consistency: <strong>Conflitti write-write</strong> (2 persone aggiornano contemporaneamente lo stesso dato in maniere diverse).</p>
 		<p>2 approcci per la risoluzione dei conflitti: pessimistico (write-lock) e ottimistico (rileva i conflitti e agisce per risolverli. CVS-style).</p>
 		<p>Spesso si usa un singolo nodo per le write.</p>
 	</div>
-	<div class="step slide" data-x="1000" data-y="1500" >
+	<div class="step slide" data-x="2000" data-y="1500" >
 		<h1>Consistenza</h1>
 		<p><span style="color: red;">Read-write</span> consistency</p>
 		<p>A inserisce un ordine di prodotto</p>
@@ -281,13 +292,13 @@
 		<p>Database <strong>relazionali</strong>: transazioni ACID</p>
 		<p>Database <strong>NoSQL</strong>: update atomici all'interno di un aggregato (inconsistency window per aggiornamenti su molteplici aggregati)</p>
 	</div>
-	<div class="step slide" data-x="2000" data-y="1500" >
+	<div class="step slide" data-x="3000" data-y="1500" >
 		<h1>Consistenza</h1>
 		<p><span style="color: red;">Eventual</span> consistency</p>
 		<p>Eventually all nodes will be updated to the same value</p>
 		<p>Es. prenotazione della ultima stanza da clienti in diverse zone del globo</p>
 	</div>
-	<div class="step slide" data-x="3000" data-y="1500" >
+	<div class="step slide" data-x="4000" data-y="1500" >
 		<h1>Vantaggi di un sistema distribuito</h1>
 		<ol>
 			<li>Gestire pi&ugrave; grandi quantit&agrave; di dati</li>
@@ -296,20 +307,37 @@
 		</ol>
 		<p>Ma il clustering introduce complessit&agrave;</p>
 	</div>
-	<div class="step slide" data-x="4000" data-y="1500" >
+	<div class="step slide" data-x="5000" data-y="1500" >
 		<h1>CAP theorem</h1>
-		<p>Un sistema distribuito non può essere allo stesso tempo consistente, disponibile e partition tolerant (errori di networking).</p>
+		<p style="font-size: smaller;">Eric Brewer, 2000</p>
+		<i>Two conflicting requests arrive at distinct locations at a time when a link between them is failed</i>
+		<p style="color:red">Un sistema distribuito non può essere allo stesso tempo consistente, disponibile e partition tolerant (errori di networking).</p>
 		<p><strong>Consistency</strong></p>
 		<p><strong>Availability: </strong>if you can talk to a node in the cluster, it can read and write data</p>
 		<p><strong>Partition tolerance: </strong>il sistema puo' sopportare che il cluster si divida in piu' partizioni incapaci di comunicare tra di loro</p>
 
 	</div>
-	<div class="step slide" data-x="5000" data-y="1500" >
+	<div class="step slide" data-x="6000" data-y="1500" >
 		<img width="700px" src="images/CAP.png" alt="cap" />
 	</div>
-	<div class="step" data-x="6000" data-y="1500" >
+	<div class="step" data-x="7000" data-y="1500" >
 		<p>Ci sono casi in cui si puo' avere a che fare con risposte inconsistenti a fronte di certe richieste...
 		... ma questi casi <strong>dipendono strettamente dal dominio e dalla conoscenza del dominio</strong>!</p>
+	</div>
+	<div class="step slide" data-x="8000" data-y="1500" >
+		<h1>Schemaless</h1>
+		<p><strong>Dati non uniformi</strong></p>
+		<p>+ <strong>Responding to change</strong> over following a plan</p>
+		<p><strong>Working software</strong> over comprehensive documentation</p>
+		<p>+ Ti concentri sul <strong>domain design</strong> e non sullo schema</p>
+		<p>+ Utile in fase di <strong>prototipizzazione</strong></p>
+	</div>
+	<div class="step slide" data-x="9000" data-y="1500" >
+		<h1>Schemaless</h1>
+		<p><strong>- Complessit&agrave; nella migrazione dei dati</strong></p>
+		<br />
+		<p><strong>Incremental migration</strong> l'applicazione legge i dati dalla vecchia colonna e li riscrive nella nuova (rischio dati non migrati)</p>
+		<p><strong>Schema versioning</strong> esecuzione codebase diversi a seconda della versione dello schema (transation layer)</p>
 	</div>
 	<div class="step slide" data-x="-1000" data-y="2500" >
 		<h1>Perchè dunque i database NoSQL?<h1>
@@ -330,20 +358,19 @@
 	<div class="step slide" data-x="1000" data-y="2500" >
 		<h1>Abbandonare i DB relazionali?</h1>
 				<p>No, ma usare differenti data store in diverse circostanze.</p>
-
-				<p>Polyglot persistence</p>
-				<p>Polyglot programmer</p>
+				<p style="color: red;">Polyglot persistence</p>
+				<p style="color: red;">Polyglot programmer</p>
 				<p>Capire la natura dei dati che vogliamo salvare e come vogliamo manipolarli.</p>
+				<img width="200px" src="images/paradigmshift.jpg" alt="achievement" />
 	</div>
 	<div id="mongodb" class="step slide" data-x="-1000" data-y="3500" >
 		<h1>Cosa è MongoDB</h1>
 		Database opensource document-based NoSQL sviluppato da 10gen.
-
 		<ol>
 		        <li>Schemaless </li>
-		        <li>Documenti strutturati JSON-like o serializzati in BSON</li>
-		        <li>Queries (anche di specifici campi di un documento)</li>
-		        <li>Performance (possibilità di definire indici)</li>
+		        <li>Documenti strutturati JSON-like</li>
+		        <li>Queries</li>
+		        <li>Performance (indici)</li>
 		</ol>
 	</div>
 	<div class="step slide" data-x="0" data-y="3500" >
@@ -358,17 +385,19 @@
 	<div class="step slide" data-x="1000" data-y="3500" style="background-image: url('images/yunolovemongodb.jpeg'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
 		<h1>Chi lo usa</h1>
 		<div>
-		<a href="http://www.mongodb.org/display/DOCS/Production+Deployments" target="_blank">Production deployments</a>
+		<a href="http://www.mongodb.org/display/DOCS/Production+Deployments" target="_blank" style="background-color: white;">Production deployments</a>
 		</div>
 	</div>
 	<div class="step slide" data-x="2000" data-y="3500" style="background-image: url('images/funnydogcomputer.gif'); background-repeat: no-repeat;background-size:cover; background-scale:0.5;color:white !important;">
-		<h1>Cosa abbiamo fatto e ottenuto</h1>
+		<h1 style="background-color: white; margin-top: 1px">Cosa abbiamo fatto</h1>
 
 		<p>Corso free di 7 settimane online.</p>
 		<p>( Video, esercizio, video, esercizio, prova settimanale... )*7 settimane</p>
 		<p>Final exam</p>
 
 		<img width="200px" src="images/achievement.png" alt="achievement" />
+
+		<a href="https://education.10gen.com" target="_blank" style="background-color: white;clear: both;display: block;">education.10gen.com</a>
 	</div>
 	<div class="step" data-x="3000" data-y="3500" >
 		<p style="font-size: 400%"><a href="https://github.com/gitfer/mongoenosql/tree/master/demos" target="_blank">Demo</a></p>
@@ -378,6 +407,7 @@
 		<ol>
 			<li><a target="_blank" href="http://martinfowler.com/books/nosql.html">NoSQL Distilled</a>by Pramod J. Sadalage e Martin Fowler</li>
 			<li><a target="_blank" href="http://www.mongodb.org">MongoDB official site</a>by 10gen</li>
+			<li><a target="_blank" href="http://docs.mongodb.org/manual/">MongoDB official documentation</a>by 10gen</li>
 			<li><a target="_blank"  href="http://www.youtube.com/watch?v=rRoy6I4gKWU&list=FLr67q6C3dUGELOtHo5YWMsA">Google I/O 2012 - SQL vs NoSQL: Battle of the backends</a></li>
 			<li><a target="_blank"  href="http://www.mongodb.org/display/DOCS/CSharp+Driver+Quickstart">C# driver quickstart</a></li>
 	</div>
@@ -385,6 +415,7 @@
 		<h1>References (2/2)</h1>
 		<ol>
 			<li><a target="_blank"  href="http://www.youtube.com/watch?v=w5qr4sx5Vt0">O'Reilly Webcast: Introduction to MongoDB</a></li>
+			<li><a target="_blank"  href="http://francescak.me/blog/2012/12/30/why-should-you-learn-mongodb-in-2013/">Why you should learn MongoDB in 2013</a></li>
 			<li><a target="_blank"  href="https://github.com/gitfer/mongoenosql">My slide and demos</a></li>
 		</ol>
 			<a target="_blank" href="http://bartaz.github.com/impress.js">Slide made with impress.js</a>
