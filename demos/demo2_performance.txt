@@ -11,3 +11,8 @@ db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':
 db.fubar.dropIndex({c:1})
 db.fubar.dropIndex({a:1, b:1})
 db.fubar.dropIndex({a:1, b:1, c:-1})
+db.fubar.dropIndex({a:1, c:1})
+
+===================================================================
+
+http://snmaynard.com/2012/10/17/things-i-wish-i-knew-about-mongodb-a-year-ago/
