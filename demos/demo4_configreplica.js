@@ -1,4 +1,4 @@
-
+// mongo --port 27018 < demos\demo4_configreplica.js
 config = { _id: "myreplicaset", members: [
 	{ _id: 0, host: "localhost:27017", priority:0, slaveDelay:5},
 	{ _id: 1, host: "localhost:27018"},
