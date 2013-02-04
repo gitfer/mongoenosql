@@ -1,7 +1,7 @@
 
 mongoimport -d studentidemo -c studs < ~/Dropbox/Documenti/NoSQL/Demo/students.js
 
-db.studs.aggregate([{$group: { _id:"$name", "somma": {"$sum": 1}} } ])
+ db.studs.aggregate([{ $unwind: '$scores'}, {$match: {'scores.type': 'exam'}},{$group: {_id: null, media: {$avg: '$scores.score'}}} ])
 
 ============================================================
 Mapping between SQL and aggregation
@@ -9,4 +9,3 @@ http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/
 
 Alternative all'aggregation framework:
 *) mapreduce
-*) hadoop
