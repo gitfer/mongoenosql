@@ -41,3 +41,8 @@ Search:
 $lt, $gt, $lte, $gte
 { $or: [{name: "alice"}, {age: 43} ]}
 {name: {$regex: "e$"}}
+
+Upsert:
+// Clausola where Nome == DaConsole. Field da aggiornare: Nome = Ugo. Se nessun documento matcha la clausola il documento viene creato.
+db.entities.update({"Nome": "DaConsole"}, { "Nome": "Ugo"}, {upsert: true} )
+
