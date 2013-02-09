@@ -53,8 +53,11 @@ namespace MongoDBDemo
                 Console.WriteLine(string.Format("Leggo il document con _id {0}", id.ToString()));
                 var query = Query.EQ("_id", id);
                 entity = collection.FindOne(query);
-               
-                Console.WriteLine(string.Format("Nome: {0}, Indirizzo: {1}", entity.Nome, String.Join(",", entity.Indirizzo.Via, entity.Indirizzo.Citta, entity.Indirizzo.Provincia, entity.Indirizzo.Cap )));
+                if (entity != null)
+                {
+                    Console.WriteLine("Persona trovata con successo!");
+                    Console.WriteLine(string.Format("Nome: {0}, Indirizzo: {1}", entity.Nome, String.Join(",", entity.Indirizzo.Via, entity.Indirizzo.Citta, entity.Indirizzo.Provincia, entity.Indirizzo.Cap)));
+                }
                 Console.ReadLine();
             }
             catch (Exception e)
