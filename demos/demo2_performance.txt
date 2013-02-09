@@ -1,18 +1,43 @@
-for (var i=0; i< 10000; i++){ db.fubar.insert({'a': Math.floor(Math.random() * 20000), 'b': Math.floor(Math.random() * 20000), 'c': Math.floor(Math.random() * 20000)}); }
+for (var i=0; i< 100000; i++){ db.fubar.insert({'a': Math.floor(Math.random() * 20000), 'b': Math.floor(Math.random() * 20000), 'c': Math.floor(Math.random() * 20000)}); }
+
+db.fubar.find({'a':10000, 'b': {'$gt': 500} }, {'a': 1, 'c':1})
+db.fubar.find({'a':10000, 'b': {'$gt': 500} }, {'a': 1, 'c':1}).explain()
 
 db.fubar.ensureIndex({a:1, b:1})
-db.fubar.ensureIndex({a:1, c:1})
-db.fubar.ensureIndex({c:1})
-db.fubar.ensureIndex({a:1, b:1, c:-1})
 
-db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).explain()
+db.fubar.find({'a':10000, 'b': {'$gt': 500} }, {'a': 1, 'c':1}).explain()
 
 
-db.fubar.dropIndex({c:1})
+
 db.fubar.dropIndex({a:1, b:1})
-db.fubar.dropIndex({a:1, b:1, c:-1})
-db.fubar.dropIndex({a:1, c:1})
 
 ===================================================================
 
 http://snmaynard.com/2012/10/17/things-i-wish-i-knew-about-mongodb-a-year-ago/
+http://docs.mongodb.org/manual/reference/explain/
+
+*) Index: (a, b, c)
+query on b -> l'index puo' essere usato? no
+query on a -> l'index puo' essere usato? si
+query on a,b -> l'index puo' essere usato? si
+
+*) Recupero indici
+db.system.indexes.find() trova tutti gli indici presenti nel DB.
+db.studs.getIndexes() trova tutti gli indici sulla collection indicata.
+db.fubar.dropIndexes() droppa tutti gli indici presenti sulla collection fubar escluso l'indice sull'_id.
+
+*) Indexing non è limitato al primo livello gerarchico di un documento.
+Crea un indice per ogni elemento nell'array
+db.bb.ensureIndex({'addresses.tags':1})
+
+*) Unique index: db.stuff.ensureIndex({'thing':1, {unique: true}})
+Per rimuovere elementi pre-creazione uniqueIndex 2 soluzioni: o .remove() con _id oppure opzione dropDups: true che pero' non permette di sapere quale dei duplicati verrà droppato.
+
+*) find con $regex potrebbe usare un indice oppure no a seconda di come è scritta la regex.
+
+*) Profiling
+db.sytem.profile()
+3 livelli di profiling: 0 profiling off, 1 log query lente, 2 log tutte le query (general debugging queries)
+db.system.profile.find({millis: { $gt: 1000 }}).sort({ts:-1})
+db.setProfilingLevel(1, 4) level 1 e numero di milliseconds che voglio loggare
+db.getProfilingStatus()
