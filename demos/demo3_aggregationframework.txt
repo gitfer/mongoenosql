@@ -9,3 +9,4 @@ http://docs.mongodb.org/manual/reference/sql-aggregation-comparison/
 
 Alternative all'aggregation framework:
 *) mapreduce
+http://docs.mongodb.org/manual/applications/map-reduce/?pageVersion=%5B%27138%27%5D
