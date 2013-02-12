@@ -20,7 +20,7 @@ namespace MongoDBDemo
                 var connectionString = "mongodb://linus.mongohq.com:10031/";
                 var username = System.Configuration.ConfigurationManager.AppSettings["username"];
                 var password = System.Configuration.ConfigurationManager.AppSettings["password"];
-                Console.WriteLine("Username:", username);
+                Console.WriteLine(string.Format("Username: {0}", username));
                 var client = new MongoClient(connectionString);
                 var server = client.GetServer();
                 var database = server.GetDatabase("app11298010", new MongoCredentials(username, password));
